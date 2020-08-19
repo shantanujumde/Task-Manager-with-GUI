@@ -13,9 +13,9 @@ def notification(name,duration):
 def playSound():
     from playsound import playsound
     from win10toast import ToastNotifier
-    playsound('D:\\Aabhyas\\Python\\OOP with python\\TASKMANAGER\\src\\1.wav')
+    playsound('[location]\\src\\1.wav')
     toaster = ToastNotifier()
-    toaster.show_toast("Task Manager","Its Time to Do Your Work",icon_path="D:\\Aabhyas\\Python\\OOP with python\\TASKMANAGER\\src\\icon.ico",
+    toaster.show_toast("Task Manager","Its Time to Do Your Work",icon_path="[location]\\src\\icon.ico",
     duration=10)
     import time
     while toaster.notification_active():
@@ -35,7 +35,7 @@ def addTask(name,date,time):
     name=name.get()
     date=date.get()
     time=time.get()
-    f = open('D:\\Aabhyas\\Python\\OOP with python\\TASKMANAGER\\tasks\\task.txt','a')
+    f = open('[location]\\tasks\\task.txt','a')
     try:
         timeCalculator(date,time)
         if '/' not in date and ':' not in time:
@@ -67,13 +67,13 @@ def addTask(name,date,time):
 #delete task
 def deltContent(val):
     print(val)
-    f = open('D:\\Aabhyas\\Python\\OOP with python\\TASKMANAGER\\tasks\\task.txt','r')
+    f = open('[location]\\tasks\\task.txt','r')
     tmp = f.read()
     lst=tmp.split('^_^')
     print('\nlst\n',lst)
     lst.remove('')
     f.close()
-    f = open('D:\\Aabhyas\\Python\\OOP with python\\TASKMANAGER\\tasks\\task.txt','w')
+    f = open('[location]\\tasks\\task.txt','w')
     for i in range(len(lst)):
         if lst[i]==val:
             lst[i]=''
@@ -84,12 +84,9 @@ def deltContent(val):
 
 
 root = Tk()
-timeImg = PhotoImage(file="D:\\Aabhyas\\Python\\OOP with python\\TASKMANAGER\\src\\backG.png")
+timeImg = PhotoImage(file="[location]\\src\\backG.png")
 Label(root, image=timeImg).place(x=0, y=0, relwidth=1, relheight=1)
 
-# timeImg1 = PhotoImage(file="D:\\Aabhyas\\Python\\OOP with python\\TASKMANAGER\\src\\clock.png")
-# timeImg1=timeImg1.subsample(2,2)
-# Label(root, image=timeImg1).place(x=30, y=60, width=200, height=200)
 
 root.title('Task Manager')
 root.geometry("1200x500+200+200")
@@ -143,7 +140,7 @@ e3.grid(row=3,column=1)
 e3.configure(state=DISABLED)
 on_click_id3 = e3.bind('<Button-1>', on_clicke3)
 
-add = PhotoImage(file="D:\\Aabhyas\\Python\\OOP with python\\TASKMANAGER\\src\\add.png")
+add = PhotoImage(file="[location]\\src\\add.png")
 add = add.subsample(15,19)
 addTask = partial(addTask,name,date,time)
 Button(root,image=add,text='Add \nTask',compound="left",command=addTask).grid(row=0, column=3,rowspan=4,padx=20,pady=2)
@@ -161,7 +158,7 @@ def showTask():
     frme.grid(row=5,pady=0,column=4)
     w.pack()
     
-    f= open('D:\\Aabhyas\\Python\\OOP with python\\TASKMANAGER\\tasks\\task.txt','r')
+    f= open('[location]\\tasks\\task.txt','r')
     data = f.read()
     lst = data.split('^_^')
     name=[]
@@ -176,7 +173,7 @@ def showTask():
 
     rect=0
     ylabel=0
-    delt = PhotoImage(file="D:\\Aabhyas\\Python\\OOP with python\\TASKMANAGER\\src\\delt.png")
+    delt = PhotoImage(file="[location]\\src\\delt.png")
     delt = delt.subsample(7,7)
     
     for i in range(len(name)):
@@ -201,7 +198,7 @@ showTask()
 Label(root, text='Clock is Ticking',bg='yellow' ,font=("Helvetica", 26)).grid(row=5,padx=50)
 # root.create_window(200,0,window=l5)
 def upComingEvent():
-    f= open('D:\\Aabhyas\\Python\\OOP with python\\TASKMANAGER\\tasks\\task.txt','r')
+    f= open('[location]\\tasks\\task.txt','r')
     data = f.read()
     lst = data.split('^_^')
     name=[]
@@ -230,7 +227,7 @@ can.grid(row=4,column=4,pady=5)
 event=Label(can,text= "Tools: " ,justify=RIGHT)
 can.create_window(25,15,window=event)
 
-refresh = PhotoImage(file="D:\\Aabhyas\\Python\\OOP with python\\TASKMANAGER\\src\\refresh.png")
+refresh = PhotoImage(file="[location]\\src\\refresh.png")
 ref = refresh.subsample(15,19)
 btn1 = Button(can,image=ref,borderwidth=0,compound="left",command=showTask, bg='black')
 can.create_window(105,20,window=btn1)
